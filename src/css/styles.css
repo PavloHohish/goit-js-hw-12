@@ -72,7 +72,8 @@ section {
   color: #808080;
 }
 
-.search-btn {
+.search-btn,
+.load-more {
   border: none;
   border-radius: 8px;
   padding: 8px 16px;
@@ -88,12 +89,16 @@ section {
 }
 
 .search-btn:hover,
-.search-btn:focus {
+.search-btn:focus,
+.load-more:hover,
+.load-more:focus {
   background: #6c8cff;
 }
 
-.search-btn:disabled {
-  background: #808080;
+.load-more {
+  display: none;
+  width: 124px;
+  margin-top: 16px;
 }
 
 /* Gallery */

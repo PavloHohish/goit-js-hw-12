@@ -4,11 +4,10 @@ import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const gallery = document.querySelector('.gallery');
-const searchBtn = document.querySelector('.search-btn');
+const loadMoreBtn = document.querySelector('.load-more');
 
 export function renderLoader() {
   gallery.innerHTML = '';
-  searchBtn.disabled = true;
   const section = document.querySelector('section');
   const loader = document.createElement('span');
   loader.classList.add('loader');
@@ -49,8 +48,6 @@ export function renderImages(images) {
     imageLink.appendChild(overlay);
 
     gallery.appendChild(imageLink);
-
-    searchBtn.disabled = false;
   });
 
   const lightbox = new SimpleLightbox('.gallery-item', {
@@ -61,7 +58,7 @@ export function renderImages(images) {
   });
 
   if (typeof SimpleLightbox !== 'undefined') {
-    SimpleLightbox.refresh();
+    lightbox.refresh();
   }
 }
 
@@ -71,4 +68,16 @@ export function showErrorToast(message) {
     message: message,
     position: 'topRight',
   });
+}
+
+export function appendImages(images) {
+  renderImages(images);
+}
+
+export function toggleLoadMoreBtn(visibility) {
+  loadMoreBtn.style.display = visibility ? 'inline-block' : 'none';
+}
+
+export function clearGallery() {
+  gallery.innerHTML = '';
 }
